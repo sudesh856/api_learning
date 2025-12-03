@@ -80,7 +80,7 @@ The API will be available at `http://localhost:3000`
 ## Project Structure
 
 ```
-golang-todos-rest-api-with-auth/
+Go-Gin-Postgres-Todo-REST-API/
 ├── cmd/
 │   └── api/
 │       └── main.go              # Application entry point
