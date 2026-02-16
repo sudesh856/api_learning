@@ -34,3 +34,5 @@ func CreateTodoHandler(pool *pgxpool.Pool) gin.HandlerFunc {
 		c.JSON(http.StatusCreated, todo)
 	}
 }
+
+
