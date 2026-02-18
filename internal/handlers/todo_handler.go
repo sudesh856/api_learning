@@ -2,7 +2,10 @@ package handlers
 
 import (
 	"net/http"
+	"strconv"
 	"todo_api/internal/repository"
+
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 
 	"github.com/gin-gonic/gin"
@@ -49,5 +52,40 @@ func GetAllTodohandler(pool *pgxpool.Pool) gin.HandlerFunc {
 
 	}
 }
+
+func GetTodoByIDHandler(pool *pgxpool.Pool) gin.HandlerFunc {
+
+	 return func(c *gin.Context) {
+
+	idStr := c.Param("id")
+
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid todo ID."})
+		return
+	}
+
+	todo, err	:= repository.GetTodoByID(pool, id)
+	if err != nil {
+		if err == pgx.ErrNoRows {
+			c.JSON(http.StatusNotFound, gin.H{"error": "Todo NOT found!"})
+			return
+		}	
+
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	}
+
+	c.JSON(http.StatusOK, todo)
+
+
+
+
+	 }
+}
+
+
+
+
 
 

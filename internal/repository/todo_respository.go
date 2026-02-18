@@ -123,3 +123,6 @@ func GetTodoByID(pool *pgxpool.Pool, id int) (*models.Todo, error) {
 	}
 	return &todo, nil
 }
+
+
+		
