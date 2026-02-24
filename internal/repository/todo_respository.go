@@ -155,32 +155,32 @@ func UpdateTodo(pool *pgxpool.Pool, id int, title string, completed bool) (*mode
 	return &todo, nil
 }
 
-func DeleteTodo(pool *pgxpool.Pool, id int, ) error {
+func DeleteTodo(pool *pgxpool.Pool, id int) error {
 
+	var ctx context.Context
+	var cancel context.CancelFunc
 
-
-	ctx, cancel := context.WithTimeout(context.Background(), 5 * time.Second)
+	ctx, cancel = context.WithTimeout(context.Background(),   5 * time.Second)
 
 	defer cancel()
 
 	var query string = `
-
-		DELETE FROM todos
-		WHERE id = $1
+	DELETE FROM todos
+	WHERE id = $1
 	`
 
-	commandTag, err := pool.Exec(ctx, query,id )
+	commandTag, err := 	  pool.Exec(ctx, query, id)
+
 	if err != nil {
 		return err
 	}
 	if commandTag.RowsAffected() == 0 {
-		return fmt.Errorf("todo with id %d was not found.", id)
+		return fmt.Errorf("todo with id %d not found!", id)
 	}
+
 	return nil
 
 
 
 }
-
-
 
