@@ -298,10 +298,4 @@ CREATE TABLE todos (
 - **Air**: Hot reloading for development
 - **godotenv**: Environment variable management
 
-## License
 
-This project is licensed under the MIT License.
-
----
-
-Happy Coding and Learning! 🙂
