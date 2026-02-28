@@ -2,8 +2,9 @@ package repository
 
 import (
 	"context"
-	"todo_api/internal/models"
 	"time"
+	"todo_api/internal/models"
+
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
@@ -26,7 +27,6 @@ func CreateUser(pool *pgxpool.Pool, user *models.User) (*models.User, error) {
 
 		&user.ID,
 		&user.Email,
-		&user.Password,
 		&user.CreatedAt,
 		&user.UpdatedAt,
 	)
@@ -94,6 +94,7 @@ func GetUserByID(pool *pgxpool.Pool, id string) (*models.User, error) {
 		&user.Password,
 		&user.CreatedAt,
 		&user.UpdatedAt,
+
 	)
 	if err != nil {
 		return nil, err
