@@ -107,3 +107,20 @@ func LoginHandler(pool *pgxpool.Pool, cfg *config.Config) gin.HandlerFunc {
 	}
 
 }
+
+
+func TestProtectedHandler() gin.HandlerFunc{
+	return func(c *gin.Context) {
+		userID, exists := c.Get("user_id")
+		if !exists {
+			c.JSON(http.StatusInternalServerError, gin.H{"error" : "Couldn't find the user id in ocntext"})
+			return
+		}
+
+		c.JSON(http.StatusOK, gin.H{
+			"message" : "Protected route accessed successfully!",
+			"user_id" : userID,
+		
+		})
+	}
+}

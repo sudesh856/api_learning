@@ -12,10 +12,10 @@ import (
 
 func AuthMiddleware(cfg *config.Config) gin.HandlerFunc{
 	return func(c *gin.Context) {
-		authHeader := c.GetHeader("Autharization")
+		authHeader := c.GetHeader("Authorization")
 
 		if authHeader == "" {
-			c.JSON(http.StatusUnauthorized, gin.H{"error": "Autharization header required!"})
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "Authorization header required!"})
 			c.Abort()
 			return
 		}
