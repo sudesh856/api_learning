@@ -2,7 +2,7 @@
 
 A lightweight, production-ready REST API for managing tasks with user authentication. Built with Go and PostgreSQL, this project demonstrates clean architecture principles with proper separation of concerns.
 
-> **Note**: This project was built following a YouTube tutorial. While the architecture and concepts were learned from that source, every line of code was written from scratch during implementation—no copy-pasting shortcuts here.
+> **Note**: This project was built following a YouTube tutorial by [ArnaCode](https://github.com/ArnaCode). While the initial architecture and concepts were learned from that tutorial, every implementation detail was coded from scratch—debugging, refactoring, customizing, and extending the original design to fit specific requirements. This represents hands-on learning and practical problem-solving rather than template-based copying.
 
 ## Overview
 
